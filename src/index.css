@@ -1,3 +1,7 @@
+/* ============================================
+   MONSEF PREMIUM DESIGN SYSTEM — index.css
+   ============================================ */
+
 :root {
   /* Surface & Background */
   --color-surface: #faf8ff;
@@ -12,18 +16,20 @@
   --color-on-surface-variant: #434655;
   --color-inverse-surface: #283044;
   --color-inverse-on-surface: #eef0ff;
-
-  /* Outlines */
   --color-outline: #737686;
   --color-outline-variant: #c3c6d7;
-
-  /* Primary Brand */
   --color-surface-tint: #0053db;
+
+  /* Primary */
   --color-primary: #004ac6;
   --color-on-primary: #ffffff;
   --color-primary-container: #2563eb;
   --color-on-primary-container: #eeefff;
   --color-inverse-primary: #b4c5ff;
+  --color-primary-fixed: #dbe1ff;
+  --color-primary-fixed-dim: #b4c5ff;
+  --color-on-primary-fixed: #00174b;
+  --color-on-primary-fixed-variant: #003099;
 
   /* Secondary */
   --color-secondary: #535f71;
@@ -31,57 +37,45 @@
   --color-secondary-container: #d6e3f9;
   --color-on-secondary-container: #596578;
 
-  /* Tertiary / Success */
+  /* Tertiary */
   --color-tertiary: #006231;
   --color-on-tertiary: #ffffff;
   --color-tertiary-container: #007e41;
   --color-on-tertiary-container: #c1ffcd;
 
-  /* Error / Warning */
+  /* Error */
   --color-error: #ba1a1a;
   --color-on-error: #ffffff;
   --color-error-container: #ffdad6;
   --color-on-error-container: #93000a;
 
-  /* Fixed Variations */
-  --color-primary-fixed: #dbe1ff;
-  --color-primary-fixed-dim: #b4c5ff;
-  --color-on-primary-fixed: #00174b;
-  --color-on-primary-fixed-variant: #003ea8;
-  --color-secondary-fixed: #d6e3f9;
-  --color-secondary-fixed-dim: #bac7dd;
-  --color-on-secondary-fixed: #0f1c2c;
-  --color-on-secondary-fixed-variant: #3b4859;
-  --color-tertiary-fixed: #8ff9ac;
-  --color-tertiary-fixed-dim: #73dc92;
-  --color-on-tertiary-fixed: #00210c;
-  --color-on-tertiary-fixed-variant: #005228;
+  /* Background alias */
+  --color-background: var(--color-surface);
 
-  /* Canvas */
-  --color-background: #faf8ff;
-  --color-on-background: #131b2e;
-  --color-surface-variant: #dae2fc;
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Fonts */
-  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-
-  /* Radii */
-  --radius-sm: 0.5rem;    /* 8px */
-  --radius-default: 1rem; /* 16px */
-  --radius-md: 1.5rem;   /* 24px */
-  --radius-lg: 2rem;     /* 32px */
-  --radius-xl: 3rem;     /* 48px */
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-xl: 48px;
   --radius-full: 9999px;
 
   /* Elevation Shadows */
-  --shadow-level-1: 0px 4px 20px rgba(37, 99, 235, 0.05), 0px 1px 3px rgba(19, 27, 46, 0.03);
-  --shadow-level-2: 0px 12px 36px rgba(0, 74, 198, 0.08), 0px 2px 8px rgba(19, 27, 46, 0.04);
-  --shadow-glow: 0px 0px 48px rgba(37, 99, 235, 0.18);
-  --border-subtle: 1px solid #e2e8f0;
-  --border-card: 1px solid rgba(195, 198, 215, 0.35);
+  --shadow-level-1: 0px 2px 8px rgba(19, 27, 46, 0.07), 0px 0px 2px rgba(0, 74, 198, 0.05);
+  --shadow-level-2: 0px 6px 24px rgba(19, 27, 46, 0.10), 0px 1px 4px rgba(0, 74, 198, 0.08);
+  --shadow-glow: 0px 0px 32px rgba(0, 74, 198, 0.12);
+  --shadow-deep: 0px 20px 60px rgba(19, 27, 46, 0.14);
+  --border-card: 1.5px solid var(--color-outline-variant);
 }
 
+/* ============================================
+   BASE RESET & BODY
+   ============================================ */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -90,13 +84,12 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
-  background-color: var(--color-background);
-  color: var(--color-on-background);
+  scroll-padding-top: 80px;
 }
 
 body {
   font-family: var(--font-body);
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.5;
   background-color: var(--color-background);
@@ -104,28 +97,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
-/* Tabular Figures for Financial Numbers */
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
 .num-tabular {
   font-feature-settings: "tnum" 1, "zero" 1;
   font-variant-numeric: tabular-nums;
 }
 
-/* Typography Utility Classes */
 .display-lg {
   font-family: var(--font-display);
-  font-size: 48px;
+  font-size: 52px;
   font-weight: 800;
-  line-height: 56px;
+  line-height: 60px;
   letter-spacing: -0.02em;
 }
 
 .headline-lg {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
-  line-height: 40px;
+  line-height: 44px;
   letter-spacing: -0.01em;
 }
 
@@ -159,18 +154,9 @@ body {
   text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
-  .display-lg {
-    font-size: 34px;
-    line-height: 42px;
-  }
-  .headline-lg {
-    font-size: 24px;
-    line-height: 32px;
-  }
-}
-
-/* Core Buttons */
+/* ============================================
+   BUTTONS
+   ============================================ */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -191,6 +177,7 @@ body {
   position: relative;
   overflow: hidden;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary:hover {
@@ -200,7 +187,7 @@ body {
 }
 
 .btn-primary:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.97);
 }
 
 .btn-secondary {
@@ -220,6 +207,7 @@ body {
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-secondary:hover {
@@ -229,13 +217,15 @@ body {
 }
 
 .btn-secondary:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.97);
 }
 
-/* Cards System */
+/* ============================================
+   CARD SYSTEM
+   ============================================ */
 .monsef-card {
   background-color: var(--color-surface-container-lowest);
-  border-radius: var(--radius-lg); /* 32px */
+  border-radius: var(--radius-lg);
   padding: 32px;
   border: var(--border-card);
   box-shadow: var(--shadow-level-1);
@@ -254,7 +244,9 @@ body {
   box-shadow: var(--shadow-glow), var(--shadow-level-2);
 }
 
-/* Ambient Radial Glow Effect */
+/* ============================================
+   AMBIENT GLOW
+   ============================================ */
 .ambient-glow-container {
   position: relative;
 }
@@ -273,7 +265,9 @@ body {
   pointer-events: none;
 }
 
-/* Status Badges & Chips */
+/* ============================================
+   BADGE CHIPS
+   ============================================ */
 .badge-chip {
   display: inline-flex;
   align-items: center;
@@ -284,27 +278,14 @@ body {
   font-weight: 600;
 }
 
-.badge-success {
-  background-color: rgba(0, 126, 65, 0.1);
-  color: var(--color-tertiary);
-}
+.badge-success { background-color: rgba(0, 126, 65, 0.1); color: var(--color-tertiary); }
+.badge-primary { background-color: rgba(0, 74, 198, 0.1); color: var(--color-primary); }
+.badge-secondary { background-color: var(--color-secondary-container); color: var(--color-on-secondary-container); }
+.badge-warning { background-color: rgba(234, 88, 12, 0.1); color: #c2410c; }
 
-.badge-primary {
-  background-color: rgba(0, 74, 198, 0.1);
-  color: var(--color-primary);
-}
-
-.badge-secondary {
-  background-color: var(--color-secondary-container);
-  color: var(--color-on-secondary-container);
-}
-
-.badge-warning {
-  background-color: rgba(234, 88, 12, 0.1);
-  color: #c2410c;
-}
-
-/* Layout Grid Container */
+/* ============================================
+   LAYOUT CONTAINER
+   ============================================ */
 .monsef-container {
   width: 100%;
   max-width: 1360px;
@@ -312,23 +293,306 @@ body {
   padding: 0 24px;
 }
 
-@media (max-width: 640px) {
-  .monsef-container {
-    padding: 0 16px;
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-outline-variant); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-outline); }
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes floatSlow {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 74, 198, 0.3); }
+  50% { box-shadow: 0 0 0 12px rgba(0, 74, 198, 0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ============================================
+   TABLET: ≤1024px
+   ============================================ */
+@media (max-width: 1024px) {
+  .display-lg {
+    font-size: 44px;
+    line-height: 52px;
+  }
+  .headline-lg {
+    font-size: 30px;
+    line-height: 38px;
   }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* ============================================
+   MOBILE: ≤768px
+   ============================================ */
+@media (max-width: 768px) {
+  /* Typography */
+  .display-lg {
+    font-size: 34px;
+    line-height: 42px;
+    letter-spacing: -0.018em;
+  }
+  .headline-lg {
+    font-size: 26px;
+    line-height: 34px;
+  }
+  .headline-md {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .body-lg {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  /* Container */
+  .monsef-container {
+    padding: 0 20px;
+  }
+
+  /* Cards */
+  .monsef-card {
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+
+  /* Disable hover lift on mobile */
+  .monsef-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-level-1);
+  }
+
+  /* Buttons */
+  .btn-primary, .btn-secondary {
+    height: 52px;
+    font-size: 15px;
+    padding: 0 24px;
+  }
+
+  /* Sections spacing */
+  section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  /* Navbar */
+  .desktop-nav, .desktop-actions {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hero */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .hero-section {
+    padding-top: 32px !important;
+    padding-bottom: 60px !important;
+  }
+  .hero-left-col {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hero-badge {
+    align-self: center !important;
+  }
+  .hero-action-btns {
+    justify-content: center !important;
+    width: 100%;
+  }
+  .hero-trust-row {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  .hero-float-card {
+    display: none !important;
+  }
+  .hero-mockup-img {
+    max-height: 320px !important;
+    width: 100% !important;
+    object-fit: cover;
+    border-radius: 24px !important;
+    transform: none !important;
+  }
+
+  /* Pillars grid 2 columns */
+  .pillars-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* How it works 2 cols */
+  .how-it-works-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Testimonials single col */
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Security grid 2 cols */
+  .security-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Calculator stacked */
+  .calculator-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Footer stacked */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+    text-align: center !important;
+  }
+  .footer-links-col {
+    align-items: center !important;
+  }
+
+  /* CTA Banner stacked */
+  .cta-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: stretch !important;
+  }
+  .cta-row a, .cta-row button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* Showcase tabs scrollable */
+  .showcase-tabs {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap !important;
+    padding-bottom: 4px;
+    gap: 8px !important;
+  }
+  .showcase-tabs::-webkit-scrollbar { display: none; }
+  .showcase-tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 13px !important;
+    padding: 8px 14px !important;
+    height: auto !important;
+  }
 }
-::-webkit-scrollbar-track {
-  background: var(--color-surface);
+
+/* ============================================
+   SMALL MOBILE: ≤480px
+   ============================================ */
+@media (max-width: 480px) {
+  .display-lg {
+    font-size: 30px;
+    line-height: 38px;
+  }
+  .headline-lg {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .headline-md {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .body-lg {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .monsef-container {
+    padding: 0 16px;
+  }
+  .monsef-card {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+  section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* Hero fully stacked CTA buttons */
+  .hero-action-btns {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .hero-action-btns a, .hero-action-btns button {
+    width: 100% !important;
+    height: 52px !important;
+    justify-content: center !important;
+  }
+  .hero-section {
+    padding-top: 24px !important;
+    padding-bottom: 48px !important;
+  }
+  .hero-mockup-img {
+    max-height: 260px !important;
+  }
+
+  /* Pillars & HowItWorks single col */
+  .pillars-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .how-it-works-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Security single col */
+  .security-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
 }
-::-webkit-scrollbar-thumb {
-  background: var(--color-outline-variant);
-  border-radius: 4px;
+
+/* ============================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ============================================ */
+@media (hover: none) {
+  /* Active feedback for touch */
+  .monsef-card:active {
+    transform: scale(0.98) !important;
+    transition: transform 0.1s ease !important;
+  }
+  .btn-primary:active {
+    transform: scale(0.97) !important;
+    box-shadow: 0px 2px 8px rgba(0, 74, 198, 0.2) !important;
+  }
+  .btn-secondary:active {
+    transform: scale(0.97) !important;
+  }
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-outline);
+
+/* Minimum tap target size (WCAG 2.5.5) */
+@media (max-width: 768px) {
+  a, button {
+    min-height: 44px;
+  }
 }

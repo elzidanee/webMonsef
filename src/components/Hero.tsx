@@ -15,7 +15,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
         position: 'relative',
         overflow: 'hidden',
       }}
-      className="ambient-glow-container"
+      className="ambient-glow-container hero-section"
     >
       <div className="monsef-container" style={{ position: 'relative', zIndex: 1 }}>
         <div
@@ -28,10 +28,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
           className="hero-grid"
         >
           {/* Left Column: Content */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }} className="hero-left-col">
             {/* Tag Badge */}
             <div
-              className="badge-chip badge-primary"
+              className="badge-chip badge-primary hero-badge"
               style={{
                 marginBottom: '24px',
                 padding: '8px 18px',
@@ -79,6 +79,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
 
             {/* Action Buttons */}
             <div
+              className="hero-action-btns"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -197,6 +198,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
 
               {/* Floating Live Card 1: Total Wealth */}
               <div
+                className="hero-float-card"
                 style={{
                   position: 'absolute',
                   top: '10%',
@@ -242,6 +244,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
 
               {/* Floating Live Card 2: Savings Goal */}
               <div
+                className="hero-float-card"
                 style={{
                   position: 'absolute',
                   bottom: '12%',
@@ -290,6 +293,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
 
               {/* Floating Badge: Security */}
               <div
+                className="hero-float-card"
                 style={{
                   position: 'absolute',
                   top: '-15px',
@@ -314,21 +318,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
         </div>
       </div>
 
-      <style>{`
-        @keyframes floatSlow {
-          0% { transform: translateY(0px); }
-          100% { transform: translateY(-12px); }
-        }
-        @media (max-width: 992px) {
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
-          }
-          .hero-mockup-img {
-            max-height: 420px !important;
-          }
-        }
-      `}</style>
+      {/* Inline styles removed — now handled by index.css */}
     </section>
   );
 };

@@ -204,67 +204,70 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           </button>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Mobile Dropdown — Premium Glassmorphism */}
         {mobileMenuOpen && (
           <div
             style={{
-              marginTop: '16px',
-              padding: '24px',
-              backgroundColor: '#ffffff',
+              marginTop: '12px',
+              padding: '8px',
+              background: 'rgba(255, 255, 255, 0.95)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
               borderRadius: '24px',
-              boxShadow: 'var(--shadow-level-2)',
-              border: 'var(--border-card)',
+              boxShadow: '0 20px 60px rgba(19, 27, 46, 0.15), 0 4px 16px rgba(0, 74, 198, 0.08)',
+              border: '1px solid rgba(255, 255, 255, 0.8)',
               display: 'flex',
               flexDirection: 'column',
-              gap: '16px',
+              gap: '2px',
+              animation: 'mobileMenuSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            <a
-              href="#fitur"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ fontWeight: 600, color: 'var(--color-on-surface)' }}
-            >
-              Fitur Utama
-            </a>
-            <a
-              href="#showcase"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ fontWeight: 600, color: 'var(--color-on-surface)' }}
-            >
-              Solusi Finansial
-            </a>
-            <a
-              href="#simulasi"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ fontWeight: 600, color: 'var(--color-on-surface)' }}
-            >
-              Kalkulator Pertumbuhan
-            </a>
-            <a
-              href="#keamanan"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ fontWeight: 600, color: 'var(--color-on-surface)' }}
-            >
-              Keamanan Bank-Grade
-            </a>
-            <a
-              href="#faq"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{ fontWeight: 600, color: 'var(--color-on-surface)' }}
-            >
-              Tanya Jawab (FAQ)
-            </a>
-            <hr style={{ border: 'none', borderTop: '1px solid #e2e8f0', margin: '8px 0' }} />
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenDemo();
-              }}
-              className="btn-primary"
-              style={{ width: '100%', height: '48px', fontSize: '15px' }}
-            >
-              Coba MONSEF Gratis
-            </button>
+            {[
+              { href: '#fitur', label: 'Fitur Utama', emoji: '⚡' },
+              { href: '#showcase', label: 'Solusi Finansial', emoji: '💡' },
+              { href: '#simulasi', label: 'Kalkulator Pertumbuhan', emoji: '📊' },
+              { href: '#keamanan', label: 'Keamanan Bank-Grade', emoji: '🔒' },
+              { href: '#faq', label: 'Tanya Jawab (FAQ)', emoji: '❓' },
+            ].map(({ href, label, emoji }) => (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '14px',
+                  padding: '14px 16px',
+                  borderRadius: '16px',
+                  fontWeight: 600,
+                  fontSize: '15px',
+                  color: 'var(--color-on-surface)',
+                  textDecoration: 'none',
+                  transition: 'background-color 0.15s ease',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(0, 74, 198, 0.06)')}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+              >
+                <span style={{ fontSize: '18px', flexShrink: 0 }}>{emoji}</span>
+                <span>{label}</span>
+              </a>
+            ))}
+
+            <div style={{ height: '1px', background: 'var(--color-outline-variant)', margin: '6px 16px', opacity: 0.5 }} />
+
+            <div style={{ padding: '8px 8px 4px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <a
+                href="https://drive.google.com/uc?export=download&id=1fhApMK8_l1k8XMazdMwgw0v308E4X4ck"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+                style={{ width: '100%', height: '52px', fontSize: '15px', textDecoration: 'none' }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Install App Gratis
+              </a>
+            </div>
           </div>
         )}
       </div>
@@ -277,17 +280,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           color: var(--color-on-surface-variant);
           text-decoration: none;
           transition: color 0.2s ease;
+          -webkit-tap-highlight-color: transparent;
         }
         .nav-link:hover {
           color: var(--color-primary);
         }
-        @media (max-width: 900px) {
-          .desktop-nav, .desktop-actions {
-            display: none !important;
-          }
-          .mobile-menu-btn {
-            display: block !important;
-          }
+        @keyframes mobileMenuSlide {
+          from { opacity: 0; transform: translateY(-10px) scale(0.97); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
       `}</style>
     </header>
