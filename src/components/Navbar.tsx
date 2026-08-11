@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Download, Menu, X, Wallet } from 'lucide-react';
 
 interface NavbarProps {
@@ -6,220 +6,211 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <header
       style={{
-        position: 'sticky',
-        top: 0,
+        position: 'fixed',
+        bottom: '24px',
+        left: '50%',
+        transform: 'translateX(-50%)',
         zIndex: 1000,
-        backgroundColor: scrolled ? 'rgba(250, 248, 255, 0.85)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(195, 198, 215, 0.3)' : '1px solid transparent',
-        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-        padding: '16px 0',
+        width: 'calc(100% - 32px)',
+        maxWidth: '920px',
       }}
+      className="floating-bottom-dock"
     >
-      <div className="monsef-container">
+      <div
+        style={{
+          position: 'relative',
+          backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderRadius: '999px',
+          border: '1px solid rgba(0, 74, 198, 0.15)',
+          boxShadow: '0 20px 50px -10px rgba(15, 23, 42, 0.18), 0 2px 10px rgba(0, 74, 198, 0.1)',
+          padding: '8px 12px 8px 18px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        {/* Brand Logo */}
+        <a
+          href="#"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            textDecoration: 'none',
+          }}
+        >
+          <div
+            style={{
+              width: '38px',
+              height: '38px',
+              borderRadius: '12px',
+              background: 'linear-gradient(135deg, #004ac6 0%, #2563eb 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#ffffff',
+              boxShadow: '0 4px 12px rgba(0, 74, 198, 0.3)',
+            }}
+          >
+            <Wallet size={20} />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '18px',
+                fontWeight: 800,
+                color: 'var(--color-on-surface)',
+                letterSpacing: '-0.02em',
+                lineHeight: 1,
+              }}
+            >
+              MONSEF
+            </span>
+            <span
+              style={{
+                fontSize: '10px',
+                color: 'var(--color-primary)',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                marginTop: '2px',
+              }}
+            >
+              FINTECH
+            </span>
+          </div>
+        </a>
+
+        {/* Desktop Nav Links */}
+        <nav
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '24px',
+          }}
+          className="desktop-nav"
+        >
+          {[
+            { href: '#fitur', label: 'Fitur' },
+            { href: '#showcase', label: 'Solusi' },
+            { href: '#simulasi', label: 'Kalkulator' },
+            { href: '#keamanan', label: 'Keamanan' },
+            { href: '#faq', label: 'FAQ' },
+          ].map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              className="nav-link"
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontWeight: 600,
+                fontSize: '14px',
+                color: 'var(--color-on-surface-variant)',
+                textDecoration: 'none',
+                padding: '6px 12px',
+                borderRadius: '999px',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Action CTAs */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
+            gap: '10px',
           }}
+          className="desktop-actions"
         >
-          {/* Logo */}
-          <a
-            href="#"
+          <button
+            onClick={onOpenDemo}
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
+              height: '42px',
+              padding: '0 16px',
+              borderRadius: '999px',
+              backgroundColor: 'transparent',
+              color: 'var(--color-on-surface)',
+              border: '1px solid var(--color-outline-variant)',
+              fontFamily: 'var(--font-display)',
+              fontWeight: 600,
+              fontSize: '13px',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            Masuk
+          </button>
+
+          <a
+            href="https://drive.google.com/uc?export=download&id=1fhApMK8_l1k8XMazdMwgw0v308E4X4ck"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+            style={{
+              height: '42px',
+              padding: '0 20px',
+              fontSize: '13px',
               textDecoration: 'none',
             }}
           >
-            <div
-              style={{
-                width: '42px',
-                height: '42px',
-                borderRadius: '14px',
-                background: 'linear-gradient(135deg, #004ac6 0%, #2563eb 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#ffffff',
-                boxShadow: '0 4px 14px rgba(0, 74, 198, 0.3)',
-              }}
-            >
-              <Wallet size={24} />
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '22px',
-                    fontWeight: 800,
-                    color: 'var(--color-on-surface)',
-                    letterSpacing: '-0.02em',
-                  }}
-                >
-                  MONSEF
-                </span>
-                <span
-                  style={{
-                    fontSize: '10px',
-                    fontWeight: 700,
-                    padding: '2px 6px',
-                    borderRadius: '99px',
-                    backgroundColor: 'var(--color-secondary-container)',
-                    color: 'var(--color-primary)',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  PREMIUM
-                </span>
-              </div>
-              <span
-                style={{
-                  fontSize: '11px',
-                  color: 'var(--color-on-surface-variant)',
-                  fontWeight: 500,
-                  marginTop: '-2px',
-                }}
-              >
-                Aerated Wealth Management
-              </span>
-            </div>
+            <Download size={15} />
+            <span>Install App</span>
           </a>
-
-          {/* Desktop Nav Links */}
-          <nav
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '32px',
-            }}
-            className="desktop-nav"
-          >
-            <a href="#fitur" className="nav-link">
-              Fitur
-            </a>
-            <a href="#showcase" className="nav-link">
-              Solusi
-            </a>
-            <a href="#simulasi" className="nav-link">
-              Kalkulator
-            </a>
-            <a href="#keamanan" className="nav-link">
-              Keamanan
-            </a>
-            <a href="#faq" className="nav-link">
-              FAQ
-            </a>
-          </nav>
-
-          {/* Action CTAs */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-            }}
-            className="desktop-actions"
-          >
-            <button
-              onClick={onOpenDemo}
-              style={{
-                height: '46px',
-                padding: '0 20px',
-                borderRadius: 'var(--radius-full)',
-                backgroundColor: 'transparent',
-                color: 'var(--color-on-surface)',
-                border: '1px solid var(--color-outline-variant)',
-                fontFamily: 'var(--font-display)',
-                fontWeight: 600,
-                fontSize: '14px',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-primary)';
-                e.currentTarget.style.color = 'var(--color-primary)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--color-outline-variant)';
-                e.currentTarget.style.color = 'var(--color-on-surface)';
-              }}
-            >
-              Masuk Akun
-            </button>
-
-            <a
-              href="https://drive.google.com/uc?export=download&id=1fhApMK8_l1k8XMazdMwgw0v308E4X4ck"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-              style={{
-                height: '46px',
-                padding: '0 24px',
-                fontSize: '14px',
-                textDecoration: 'none',
-              }}
-            >
-              <Download size={16} />
-              <span>Download App</span>
-            </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{
-              display: 'none',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: 'var(--color-on-surface)',
-              padding: '8px',
-            }}
-            className="mobile-menu-btn"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
 
-        {/* Mobile Dropdown — Premium Glassmorphism */}
+        {/* Mobile Menu Toggle Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          style={{
+            display: 'none',
+            background: 'rgba(0, 74, 198, 0.08)',
+            border: 'none',
+            borderRadius: '999px',
+            cursor: 'pointer',
+            color: 'var(--color-primary)',
+            padding: '10px 14px',
+            alignItems: 'center',
+            gap: '6px',
+            fontSize: '13px',
+            fontWeight: 700,
+          }}
+          className="mobile-menu-btn"
+          aria-label="Toggle menu"
+        >
+          <span>Menu</span>
+          {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+        </button>
+
+        {/* Mobile Dropdown Menu — Pops UP Above Floating Dock */}
         {mobileMenuOpen && (
           <div
             style={{
-              marginTop: '12px',
+              position: 'absolute',
+              bottom: 'calc(100% + 12px)',
+              left: 0,
+              right: 0,
               padding: '8px',
-              background: 'rgba(255, 255, 255, 0.95)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
+              background: 'rgba(255, 255, 255, 0.96)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
               borderRadius: '24px',
-              boxShadow: '0 20px 60px rgba(19, 27, 46, 0.15), 0 4px 16px rgba(0, 74, 198, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.8)',
+              boxShadow: '0 20px 60px rgba(15, 23, 42, 0.2), 0 4px 16px rgba(0, 74, 198, 0.1)',
+              border: '1px solid rgba(0, 74, 198, 0.15)',
               display: 'flex',
               flexDirection: 'column',
               gap: '2px',
-              animation: 'mobileMenuSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+              animation: 'mobileMenuSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
             {[
@@ -237,57 +228,58 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '14px',
-                  padding: '14px 16px',
+                  padding: '12px 16px',
                   borderRadius: '16px',
                   fontWeight: 600,
-                  fontSize: '15px',
+                  fontSize: '14px',
                   color: 'var(--color-on-surface)',
                   textDecoration: 'none',
-                  transition: 'background-color 0.15s ease',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(0, 74, 198, 0.06)')}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
               >
-                <span style={{ fontSize: '18px', flexShrink: 0 }}>{emoji}</span>
+                <span style={{ fontSize: '18px' }}>{emoji}</span>
                 <span>{label}</span>
               </a>
             ))}
 
-            <div style={{ height: '1px', background: 'var(--color-outline-variant)', margin: '6px 16px', opacity: 0.5 }} />
+            <div style={{ height: '1px', background: '#e2e8f0', margin: '4px 12px' }} />
 
-            <div style={{ padding: '8px 8px 4px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <a
-                href="https://drive.google.com/uc?export=download&id=1fhApMK8_l1k8XMazdMwgw0v308E4X4ck"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-                style={{ width: '100%', height: '52px', fontSize: '15px', textDecoration: 'none' }}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Install App Gratis
-              </a>
-            </div>
+            <a
+              href="https://drive.google.com/uc?export=download&id=1fhApMK8_l1k8XMazdMwgw0v308E4X4ck"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              style={{ width: '100%', height: '48px', fontSize: '14px', textDecoration: 'none', marginTop: '4px' }}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <Download size={16} />
+              <span>Install APK MONSEF</span>
+            </a>
           </div>
         )}
       </div>
 
       <style>{`
-        .nav-link {
-          font-family: var(--font-body);
-          font-weight: 600;
-          font-size: 15px;
-          color: var(--color-on-surface-variant);
-          text-decoration: none;
-          transition: color 0.2s ease;
-          -webkit-tap-highlight-color: transparent;
-        }
         .nav-link:hover {
-          color: var(--color-primary);
+          background-color: rgba(0, 74, 198, 0.08) !important;
+          color: var(--color-primary) !important;
         }
-        @keyframes mobileMenuSlide {
-          from { opacity: 0; transform: translateY(-10px) scale(0.97); }
+        @keyframes mobileMenuSlideUp {
+          from { opacity: 0; transform: translateY(12px) scale(0.97); }
           to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @media (max-width: 900px) {
+          .desktop-nav, .desktop-actions {
+            display: none !important;
+          }
+          .mobile-menu-btn {
+            display: flex !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .floating-bottom-dock {
+            bottom: 16px !important;
+            width: calc(100% - 24px) !important;
+          }
         }
       `}</style>
     </header>
