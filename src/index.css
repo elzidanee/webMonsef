@@ -93,7 +93,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+  scroll-padding-top: 20px;
 }
 
 body {
@@ -107,6 +107,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
+  padding-bottom: 90px; /* Space for floating bottom dock */
 }
 
 /* ============================================
@@ -401,7 +402,7 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 /* ============================================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS & MOBILE REFINEMENTS
    ============================================ */
 @media (max-width: 1024px) {
   .display-lg { font-size: 44px; }
@@ -409,21 +410,32 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 @media (max-width: 768px) {
-  .display-lg { font-size: 36px; line-height: 1.2; }
-  .headline-lg { font-size: 26px; line-height: 1.3; }
+  .display-lg { font-size: 34px; line-height: 1.2; text-align: center; }
+  .headline-lg { font-size: 26px; line-height: 1.3; text-align: center; }
   .headline-md { font-size: 20px; }
-  .body-lg { font-size: 16px; }
+  .body-lg { font-size: 16px; text-align: center; }
   .monsef-container { padding: 0 20px; }
-  .monsef-card { padding: 24px 20px; border-radius: 20px; }
-  .btn-primary, .btn-secondary { height: 52px; font-size: 15px; padding: 0 24px; }
-  section { padding-top: 60px !important; padding-bottom: 60px !important; }
+  .monsef-card { padding: 22px 18px; border-radius: 20px; }
+  .btn-primary, .btn-secondary { height: 50px; font-size: 15px; padding: 0 22px; }
+  section { padding-top: 48px !important; padding-bottom: 48px !important; }
 }
 
 @media (max-width: 480px) {
-  .display-lg { font-size: 30px; }
-  .headline-lg { font-size: 22px; }
-  .body-lg { font-size: 15px; }
+  .display-lg { font-size: 28px; line-height: 1.25; }
+  .headline-lg { font-size: 22px; line-height: 1.3; }
+  .body-lg { font-size: 14px; }
   .monsef-container { padding: 0 16px; }
-  .monsef-card { padding: 20px 16px; border-radius: 18px; }
-  section { padding-top: 48px !important; padding-bottom: 48px !important; }
+  .monsef-card { padding: 18px 14px; border-radius: 16px; }
+  section { padding-top: 40px !important; padding-bottom: 40px !important; }
+
+  /* Full width action buttons on small mobile */
+  .hero-action-btns {
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  .hero-action-btns a, .hero-action-btns button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
 }
