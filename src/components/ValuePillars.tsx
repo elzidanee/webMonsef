@@ -54,10 +54,11 @@ export const ValuePillars: React.FC = () => {
 
         {/* 4 Pillars Grid */}
         <div
+          className="pillars-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '28px',
+            gap: '24px',
           }}
         >
           {pillars.map((pillar, idx) => (
@@ -69,19 +70,21 @@ export const ValuePillars: React.FC = () => {
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 height: '100%',
+                overflow: 'hidden',
               }}
             >
               <div>
                 <div
                   style={{
-                    width: '60px',
-                    height: '60px',
-                    borderRadius: '20px',
+                    width: '54px',
+                    height: '54px',
+                    borderRadius: '16px',
                     backgroundColor: pillar.bgIcon,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginBottom: '24px',
+                    marginBottom: '20px',
+                    border: '1px solid rgba(0, 74, 198, 0.08)',
                   }}
                 >
                   {pillar.icon}
@@ -89,11 +92,11 @@ export const ValuePillars: React.FC = () => {
 
                 <div
                   style={{
-                    fontSize: '12px',
-                    fontWeight: 700,
+                    fontSize: '11px',
+                    fontWeight: 800,
                     textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
-                    color: 'var(--color-on-surface-variant)',
+                    letterSpacing: '0.1em',
+                    color: 'var(--color-primary)',
                     marginBottom: '6px',
                   }}
                 >
@@ -103,9 +106,9 @@ export const ValuePillars: React.FC = () => {
                 <h3
                   className="headline-md"
                   style={{
-                    fontSize: '20px',
-                    lineHeight: '28px',
-                    marginBottom: '12px',
+                    fontSize: '19px',
+                    lineHeight: '26px',
+                    marginBottom: '10px',
                     color: 'var(--color-on-surface)',
                   }}
                 >
@@ -115,7 +118,7 @@ export const ValuePillars: React.FC = () => {
                 <p
                   className="body-md"
                   style={{
-                    fontSize: '15px',
+                    fontSize: '14px',
                     lineHeight: '22px',
                     color: 'var(--color-on-surface-variant)',
                   }}
@@ -126,17 +129,17 @@ export const ValuePillars: React.FC = () => {
 
               <div
                 style={{
-                  marginTop: '32px',
+                  marginTop: '24px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px',
                   color: 'var(--color-primary)',
-                  fontWeight: 600,
-                  fontSize: '14px',
+                  fontWeight: 700,
+                  fontSize: '13px',
                 }}
               >
-                <span>Pelajari lebih lanjut</span>
-                <ArrowUpRight size={16} />
+                <span>Pelajari Fitur</span>
+                <ArrowUpRight size={15} />
               </div>
             </div>
           ))}

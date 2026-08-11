@@ -45,6 +45,7 @@ export const HowItWorks: React.FC = () => {
         </div>
 
         <div
+          className="how-it-works-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
@@ -58,38 +59,54 @@ export const HowItWorks: React.FC = () => {
               className="monsef-card"
               style={{
                 backgroundColor: '#ffffff',
-                padding: '32px 24px',
-                textAlign: 'center',
+                padding: '28px 20px',
+                textAlign: 'left',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center',
+                alignItems: 'flex-start',
+                position: 'relative',
               }}
             >
               <div
                 style={{
-                  width: '56px',
-                  height: '56px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--color-primary)',
-                  color: '#ffffff',
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 800,
-                  fontSize: '22px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
+                  justifyContent: 'space-between',
+                  width: '100%',
                   marginBottom: '20px',
-                  boxShadow: '0 4px 14px rgba(0, 74, 198, 0.25)',
                 }}
               >
-                {step.num}
+                <div
+                  style={{
+                    width: '46px',
+                    height: '46px',
+                    borderRadius: '14px',
+                    backgroundColor: 'rgba(0, 74, 198, 0.08)',
+                    color: 'var(--color-primary)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {step.icon}
+                </div>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 800,
+                    fontSize: '28px',
+                    color: '#cbd5e1',
+                  }}
+                >
+                  0{step.num}
+                </span>
               </div>
 
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: '10px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: '8px' }}>
                 {step.title}
               </h3>
 
-              <p style={{ fontSize: '14px', color: 'var(--color-on-surface-variant)', lineHeight: '1.5' }}>
+              <p style={{ fontSize: '14px', color: 'var(--color-on-surface-variant)', lineHeight: '1.55' }}>
                 {step.desc}
               </p>
             </div>

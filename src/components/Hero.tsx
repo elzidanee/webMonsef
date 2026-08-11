@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, Play, TrendingUp, Sparkles, Lock, Star } from 'lucide-react';
+import { Download, Play, TrendingUp, Lock, Star } from 'lucide-react';
 import monsef3 from '../assets/monsef3.jpeg';
 
 interface HeroProps {
@@ -35,14 +35,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
               style={{
                 marginBottom: '24px',
                 padding: '8px 18px',
-                fontSize: '14px',
+                fontSize: '13px',
                 border: '1px solid rgba(0, 74, 198, 0.15)',
-                backgroundColor: 'rgba(0, 74, 198, 0.06)',
+                backgroundColor: 'rgba(0, 74, 198, 0.05)',
                 backdropFilter: 'blur(8px)',
               }}
             >
-              <Sparkles size={16} style={{ color: 'var(--color-primary)' }} />
-              <span>Smart Financial Ecosystem</span>
+              <span className="pulse-dot" />
+              <span>Smart Financial Ecosystem • Monsef v2.0</span>
             </div>
 
             {/* Headline */}
