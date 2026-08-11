@@ -107,7 +107,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
-  padding-bottom: 90px; /* Space for floating bottom dock */
+  padding-bottom: 100px; /* Generous bottom spacing for floating dock */
 }
 
 /* ============================================
@@ -402,31 +402,96 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 /* ============================================
-   RESPONSIVE BREAKPOINTS & MOBILE REFINEMENTS
+   RESPONSIVE BREAKPOINTS & MOBILE OVERRIDES
    ============================================ */
+
 @media (max-width: 1024px) {
   .display-lg { font-size: 44px; }
   .headline-lg { font-size: 32px; }
 }
 
+/* Tablet & Mobile Grid & Layout Overrides */
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .hero-left-col {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hero-badge {
+    align-self: center !important;
+  }
+  .hero-action-btns {
+    justify-content: center !important;
+    width: 100%;
+  }
+  .hero-trust-row {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  .hero-mockup-img {
+    max-height: 320px !important;
+    transform: none !important;
+    border-width: 4px !important;
+  }
+  .hero-float-card {
+    display: none !important;
+  }
+}
+
 @media (max-width: 768px) {
-  .display-lg { font-size: 34px; line-height: 1.2; text-align: center; }
-  .headline-lg { font-size: 26px; line-height: 1.3; text-align: center; }
-  .headline-md { font-size: 20px; }
-  .body-lg { font-size: 16px; text-align: center; }
-  .monsef-container { padding: 0 20px; }
-  .monsef-card { padding: 22px 18px; border-radius: 20px; }
-  .btn-primary, .btn-secondary { height: 50px; font-size: 15px; padding: 0 22px; }
+  /* Typography */
+  .display-lg { font-size: 32px !important; line-height: 1.22 !important; text-align: center; }
+  .headline-lg { font-size: 24px !important; line-height: 1.3 !important; text-align: center; }
+  .headline-md { font-size: 18px !important; }
+  .body-lg { font-size: 15px !important; text-align: center; }
+
+  /* Containers & Cards */
+  .monsef-container { padding: 0 16px !important; }
+  .monsef-card { padding: 20px 16px !important; border-radius: 20px !important; }
+
+  /* Buttons */
+  .btn-primary, .btn-secondary { height: 48px !important; font-size: 14px !important; padding: 0 20px !important; }
   section { padding-top: 48px !important; padding-bottom: 48px !important; }
+
+  /* Grids for All Sections */
+  .pillars-grid { grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
+  .how-it-works-grid { grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
+  .testimonials-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .security-grid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .calculator-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; text-align: center !important; }
+
+  /* Showcase Tabs horizontal scroll */
+  .showcase-tabs {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap !important;
+    padding-bottom: 6px;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+  }
+  .showcase-tabs::-webkit-scrollbar { display: none; }
+  .showcase-tab-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    font-size: 13px !important;
+    padding: 8px 14px !important;
+  }
 }
 
 @media (max-width: 480px) {
-  .display-lg { font-size: 28px; line-height: 1.25; }
-  .headline-lg { font-size: 22px; line-height: 1.3; }
-  .body-lg { font-size: 14px; }
-  .monsef-container { padding: 0 16px; }
-  .monsef-card { padding: 18px 14px; border-radius: 16px; }
-  section { padding-top: 40px !important; padding-bottom: 40px !important; }
+  .display-lg { font-size: 26px !important; line-height: 1.25 !important; }
+  .headline-lg { font-size: 20px !important; line-height: 1.3 !important; }
+  .body-lg { font-size: 14px !important; }
+
+  /* Single Column Grids on small mobile screens */
+  .pillars-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .how-it-works-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .security-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
 
   /* Full width action buttons on small mobile */
   .hero-action-btns {
