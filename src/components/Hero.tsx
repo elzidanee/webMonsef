@@ -1,5 +1,6 @@
 import React from 'react';
 import { Download, Play, TrendingUp, Sparkles, Lock, Star } from 'lucide-react';
+import monsef3 from '../assets/monsef3.jpeg';
 
 interface HeroProps {
   onOpenDemo: () => void;
@@ -180,7 +181,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
               }}
             >
               <img
-                src="src/assets/monsef3.jpeg"
+                src={monsef3}
                 alt="Monsef App Dashboard Preview"
                 style={{
                   maxHeight: '520px',
