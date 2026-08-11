@@ -11,17 +11,17 @@ import { Testimonials } from './components/Testimonials';
 import { FaqSection } from './components/FaqSection';
 import { CtaBanner } from './components/CtaBanner';
 import { Footer } from './components/Footer';
-import { DemoModal } from './components/DemoModal';
+import { AppSimulator } from './components/AppSimulator';
 
 export function App() {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isSimulatorOpen, setIsSimulatorOpen] = useState(false);
 
   const handleOpenDemo = () => {
-    setIsDemoModalOpen(true);
+    setIsSimulatorOpen(true);
   };
 
   const handleCloseDemo = () => {
-    setIsDemoModalOpen(false);
+    setIsSimulatorOpen(false);
   };
 
   return (
@@ -43,7 +43,7 @@ export function App() {
 
       <Footer />
 
-      <DemoModal isOpen={isDemoModalOpen} onClose={handleCloseDemo} />
+      <AppSimulator isOpen={isSimulatorOpen} onClose={handleCloseDemo} />
     </div>
   );
 }
